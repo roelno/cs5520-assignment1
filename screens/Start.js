@@ -2,6 +2,8 @@ import { SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import Checkbox from 'expo-checkbox';
 import Header from '../components/Header'
+import TextInputField from '../components/TextInput';
+import Card from '../components/Card'; 
 import CustomButton from '../components/MyButton'
 
 const Start = ({userName, userGuess, validateGameStart, userNameHandler, userGuessHandler, attempts, attemptsHandler}) => {
@@ -67,23 +69,20 @@ const Start = ({userName, userGuess, validateGameStart, userNameHandler, userGue
         
             <Header headerText = {headerText} />
 
-            <View style = {styles.card}>
+            <Card style={styles.card}>
                 <Text style = {styles.hint}>Name</Text>
-                <TextInput style = {styles.input}
-                    value = {myName}
-                    onChangeText = {(name) => setMyName(name)}
+                <TextInputField
+                    value={myName}
+                    onChangeText={setMyName}
+                    errorMessage={myNameError}
                 />
-                {myNameError ? <Text style={styles.errorInput}>{myNameError}</Text> : null}
-
                 <Text style = {styles.hint}>Enter a Number</Text>
-                <TextInput style = {styles.input}
-                    value = {myGuess}
-                    onChangeText = {(num) => setMyGuess(num)}
-                    // TODO :parseInt
+                <TextInputField
+                    value={myGuess}
+                    onChangeText={setMyGuess}
                     keyboardType="numeric"
+                    errorMessage={myGuessError}
                 />
-                {myGuessError ? <Text style={styles.errorInput}>{myGuessError}</Text> : null}
-
 
                 <View style={styles.checkboxContainer}>
                     <Checkbox
@@ -108,7 +107,7 @@ const Start = ({userName, userGuess, validateGameStart, userNameHandler, userGue
                         isEnabled={true}
                     />
                 </View>
-            </View>
+            </Card>
             
 
         </SafeAreaView>
@@ -147,6 +146,7 @@ const styles = StyleSheet.create({
     },
     errorInput: {
         color: 'red',
+        fontSize: 12,
         marginTop: 1,
     },
     hint: {

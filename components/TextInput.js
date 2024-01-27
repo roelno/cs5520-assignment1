@@ -8,7 +8,6 @@ const TextInputField = ({ value, onChangeText, placeholder, keyboardType, errorM
                 style={styles.input}
                 value={value}
                 onChangeText={onChangeText}
-                placeholder={placeholder}
                 keyboardType={keyboardType || 'default'}
             />
             {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
