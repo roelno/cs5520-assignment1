@@ -45,6 +45,15 @@ const App = () => {
     setGameFinished(true);
   }
 
+  const startAgain = () => {
+    setGameFinished(false);
+    setGameStart(false);
+    setUserName('');
+    setUserGuess('');
+    setAttempts(3);
+    setHasUserWon(false);  
+  }
+
 
 
 
@@ -75,7 +84,9 @@ const App = () => {
           attemptsHandler = {handleAttempts} />
         
       ): (
-        <Final />
+        <Final 
+          hasUserWon = {hasUserWon}
+          onStartAgain = {startAgain}/>
       )} 
         
       
