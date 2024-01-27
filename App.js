@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import Start from './screens/Start'
 import Game from "./screens/Game";
@@ -9,8 +9,9 @@ const App = () => {
   const [canGameStart, setGameStart] = useState(false);
   const [hasUserWon, setHasUserWon] = useState(false);
   const [isGameFinished, setGameFinished] = useState(false);
-
-  const answer = Math.floor(Math.random() * 10) + 1020;
+  
+  const generateRandomNumber = () => Math.floor(Math.random() * 10) + 1020;
+  const [answer, setAnswer] = useState(generateRandomNumber());
 
   const [userName, setUserName] = useState('');
   const [userGuess, setUserGuess] = useState('');
@@ -53,7 +54,8 @@ const App = () => {
     setUserName('');
     setUserGuess('');
     setAttempts(3);
-    setHasUserWon(false);  
+    setHasUserWon(false); 
+    setAnswer(generateRandomNumber()); 
   }
 
 
@@ -101,6 +103,7 @@ const App = () => {
       <Text>Attempts left {attempts}</Text>
       <Text>Modal is {modalVisible ? 'visible' : 'hidden'}</Text>
       <Text>Has user won? {hasUserWon ? 'Yes' : 'No'}</Text>
+      <Text>Is game finished? {isGameFinished ? 'Yes' : 'No'}</Text>
       <Text>{canGameStart ? 'Game Started!!' : 'Game Not Started'}</Text>
     </SafeAreaView>
   )
