@@ -1,14 +1,14 @@
 import { Button, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Checkbox from 'expo-checkbox';
 import Header from '../components/Header'
 import CustomButton from '../components/MyButton'
 
-const Start = ({validateGameStart, userNameHandler, userGuessHandler, attempts, attemptsHandler}) => {
+const Start = ({userName, userGuess, validateGameStart, userNameHandler, userGuessHandler, attempts, attemptsHandler}) => {
     const headerText = 'Guess My Number';
-    const [myName, setMyName] = useState('');
+    const [myName, setMyName] = useState(userName);
     const [myNameError, setMyNameError] = useState('');
-    const [myGuess, setMyGuess] = useState('');
+    const [myGuess, setMyGuess] = useState(userGuess);
     const [myGuessError, setMyGuessError] = useState('');
     const [isRobot, setRobotChecked] = useState(false);
     const [isRobotError, setRobotCheckedError] = useState('');
