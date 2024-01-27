@@ -3,10 +3,12 @@ import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import Start from './screens/Start'
 import Game from "./screens/Game";
+import Final from "./components/Final";
  
 const App = () => {
   const [canGameStart, setGameStart] = useState(false);
   const [hasUserWon, setHasUserWon] = useState(false);
+  const [isGameFinished, setGameFinished] = useState(false);
 
   const [userName, setUserName] = useState('');
   const [userGuess, setUserGuess] = useState('');
@@ -40,7 +42,7 @@ const App = () => {
 
   const onGiveUp = () => {
     setModalVisible(false);
-    // show final
+    setGameFinished(true);
   }
 
 
@@ -51,7 +53,7 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
       
-      {canGameStart && !hasUserWon ? (
+      {canGameStart && !isGameFinished && !hasUserWon ? (
         <Game
           userName = {userName} 
           userGuess = {userGuess}
@@ -62,7 +64,7 @@ const App = () => {
           onUserWin={handleUserWin}
           modalVisible={modalVisible}
         />
-      ) : (
+      ) : !isGameFinished ? (
         <Start
           userName = {userName}
           userGuess = {userGuess}
@@ -71,7 +73,12 @@ const App = () => {
           userGuessHandler = {handleUserGuess}
           attempts = {attempts}
           attemptsHandler = {handleAttempts} />
-      )}
+        
+      ): (
+        <Final />
+      )} 
+        
+      
 
       <Text>Name is {userName}</Text>
       <Text>Guess is {userGuess}</Text>
