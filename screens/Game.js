@@ -2,7 +2,7 @@ import { Button, Modal, StyleSheet, Text, View } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import CustomButton from '../components/MyButton';
 
-const Game = ({ userName, userGuess, answer, attempts, onTryAgain, onGiveUp, onUserWin, modalVisible }) => {
+const Game = ({ userName, userGuess, answer, attempts, onTryAgain, onGiveUp, hasUserWon, onCongrats, modalVisible }) => {
     const isAttemptsRemaining = attempts > 0;
 
     return (
@@ -58,14 +58,15 @@ const Game = ({ userName, userGuess, answer, attempts, onTryAgain, onGiveUp, onU
                     </View>
                     }
 
-                    {(userGuess == answer) && onUserWin(true) &&
+                    {(hasUserWon) &&
                     <View>
                         <Text style={styles.resultText}>
                             Congrats <Text style={styles.stress}>{userName}</Text>! You won!
                         </Text>
                         <CustomButton
                             title="Thank you!"
-                            onPress={ null }
+                            onPress={ onCongrats }
+                            isEnabled={true}
                         />
                     </View>
                     }
@@ -79,7 +80,7 @@ export default Game;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1, 
         justifyContent: "center",
         alignItems: "center", 
         backgroundColor: 'mistyrose'

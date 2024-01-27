@@ -19,12 +19,15 @@ const App = () => {
 
   const [modalVisible, setModalVisible] = useState(true);
 
+  useEffect(() => {
+    if (userGuess == answer) {
+      setHasUserWon(true);
+    }
+}, [userGuess, answer, hasUserWon]);
+
+
   const setGameStartState = (state) => {
     setGameStart(state);
-  }
-
-  const handleUserWin = (win) => {
-    setHasUserWon(win);
   }
 
   const handleUserName = (name) => {
@@ -46,6 +49,7 @@ const App = () => {
   const onGiveUp = () => {
     setModalVisible(false);
     setGameFinished(true);
+    setAttempts(0);
   }
 
   const startAgain = () => {
@@ -59,6 +63,10 @@ const App = () => {
     setAnswer(generateRandomNumber()); 
   }
 
+  const onCongrats = () => {
+    setGameFinished(true);
+    setAttempts(0);
+  }
 
 
 
@@ -66,8 +74,8 @@ const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-      
-      {canGameStart && !isGameFinished && !hasUserWon ? (
+
+      {canGameStart && !isGameFinished ? (
         <Game
           userName = {userName} 
           userGuess = {userGuess}
@@ -75,20 +83,21 @@ const App = () => {
           attempts = {attempts}
           onTryAgain={handleTryAgain}
           onGiveUp={onGiveUp}
+          onCongrats = {onCongrats}
           hasUserWon={hasUserWon}
-          onUserWin={handleUserWin}
           modalVisible={modalVisible}
         />
-      ) : !isGameFinished ? (
+      ) : !canGameStart ? (
         <Start
           userName = {userName}
           userGuess = {userGuess}
           validateGameStart = {setGameStartState}
           userNameHandler = {handleUserName}
           userGuessHandler = {handleUserGuess}
+          hasUserWon = {hasUserWon}
           attempts = {attempts}
-          attemptsHandler = {handleAttempts} />
-        
+          attemptsHandler = {handleAttempts} 
+          />
       ): (
         <Final 
           hasUserWon = {hasUserWon}
@@ -99,13 +108,12 @@ const App = () => {
       
 
       <Text>Name is {userName}</Text>
-      <Text>Guess is {userGuess}</Text>
-      <Text>Answer is {answer}</Text>
+      <Text>Guess is {userGuess}, Answer is {answer}</Text>
       <Text>Attempts left {attempts}</Text>
       <Text>Modal is {modalVisible ? 'visible' : 'hidden'}</Text>
-      <Text>Has user won? {hasUserWon ? 'Yes' : 'No'}</Text>
+      <Text>Has user won? {hasUserWon ? 'Won' : 'No'}</Text>
       <Text>Is game finished? {isGameFinished ? 'Yes' : 'No'}</Text>
-      <Text>{canGameStart ? 'Game Started!!' : 'Game Not Started'}</Text>
+      <Text >{canGameStart ? 'Game Started!!' : 'Game Not Started'}</Text>
     </SafeAreaView>
   )
 }
