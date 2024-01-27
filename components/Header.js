@@ -13,10 +13,11 @@ export default Header
 
 const styles = StyleSheet.create({
     header: {
-        fontSize: 24,
+        fontSize: 30,
         fontWeight: 'bold',
         padding: 5,
+        textAlign: 'center',
         color: '#007649',
-        marginTop: 30,
+        marginTop: 70,
     }
 })
