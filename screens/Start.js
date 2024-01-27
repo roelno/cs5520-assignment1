@@ -7,45 +7,53 @@ import CustomButton from '../components/MyButton'
 const Start = () => {
     const headerText = 'Guess My Number';
     const [myName, setMyName] = useState('');
+    const [myNameError, setMyNameError] = useState('');
     const [myGuess, setMyGuess] = useState('');
+    const [myGuessError, setMyGuessError] = useState('');
     const [isRobot, setRobotChecked] = useState(false);
+    const [isRobotError, setRobotCheckedError] = useState('');
 
     const resetAllUserInput = () => {
         setMyName('');
         setMyGuess('');
         setRobotChecked(false);
+        setMyNameError('');
+        setMyGuessError('');
+        setRobotCheckedError('');
     }
 
     const checkAllUserInput = () => {
+        let isValid = true;
+        setMyNameError('');
+        setMyGuessError('');
+        setRobotCheckedError('');
+
         if (myName === '') {
-            alert('Please enter your name');
-            return false;
+            setMyNameError('Please enter your name');
+            isValid = false;
+        } else if (!myName.match(/^[A-Za-z ]+$/)) {
+            setMyNameError('Please enter your name in English');
+            isValid = false;
         }
-        // check if myName is english characters (blank is allowed)
-        if (!myName.match(/^[A-Za-z ]+$/)) {
-            alert('Please enter your name in English');
-            return false;
-        }
+
         if (myGuess === '') {
-            alert('Please enter a number');
-            return false;
+            setMyGuessError('Please enter a number');
+            isValid = false;
+        } else if (isNaN(myGuess)) {
+            setMyGuessError('Please enter a number');
+            isValid = false;
+        } else if (myGuess < 1020 || myGuess > 1029) {
+            setMyGuessError('Please be between 1020 and 1029');
+            isValid = false;
         }
-        // check if myGuess is a number
-        if (isNaN(myGuess)) {
-            alert('Please enter a number');
-            return false;
+
+        if (!isRobot) {
+            setRobotCheckedError('Please confirm you are not a robot');
+            isValid = false;
         }
-        // check if myGuess is between 1020 and 1029(inclusive)
-        if (myGuess < 1020 || myGuess > 1029) {
-            alert('Please enter a number between 1020 and 1029');
-            return false;
-        }
-        if (isRobot === false) {
-            alert('Please confirm you are not a robot');
-            return false;
-        }
-        return true;
-    }
+
+        return isValid;
+    };
 
     return (
         <SafeAreaView style = {styles.container}>
@@ -58,6 +66,7 @@ const Start = () => {
                     value = {myName}
                     onChangeText = {(name) => setMyName(name)}
                 />
+                {myNameError ? <Text style={styles.errorInput}>{myNameError}</Text> : null}
 
                 <Text style = {styles.hint}>Enter a Number</Text>
                 <TextInput style = {styles.input}
@@ -65,6 +74,7 @@ const Start = () => {
                     onChangeText = {(num) => setMyGuess(num)}
                     keyboardType="numeric"
                 />
+                {myGuessError ? <Text style={styles.errorInput}>{myGuessError}</Text> : null}
 
 
                 <View style={styles.checkboxContainer}>
@@ -76,6 +86,7 @@ const Start = () => {
                     />
                     <Text style={styles.checkboxLabel}>I'm not a robot</Text>
                 </View>
+                {isRobotError ? <Text style={styles.errorInput}>{isRobotError}</Text> : null}
 
                 <View style={styles.buttonContainer}>
                     <CustomButton
@@ -122,6 +133,10 @@ const styles = StyleSheet.create({
         borderBottomColor: 'purple',
         color: 'purple',
         width: 240,
+    },
+    errorInput: {
+        color: 'red',
+        marginTop: 1,
     },
     hint: {
         fontSize: 20,
