@@ -51,6 +51,7 @@ const App = () => {
   const startAgain = () => {
     setGameFinished(false);
     setGameStart(false);
+    setModalVisible(true);
     setUserName('');
     setUserGuess('');
     setAttempts(3);
