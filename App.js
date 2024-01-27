@@ -8,6 +8,7 @@ const App = () => {
   const [canGameStart, setGameStart] = useState(false);
   const [userName, setUserName] = useState('');
   const [userGuess, setUserGuess] = useState('');
+  const [attempts, setAttempts] = useState(3);
 
   const setGameStartState = (state) => {
     setGameStart(state);
@@ -21,6 +22,9 @@ const App = () => {
     setUserGuess(guess);
   }
 
+  const handleAttempts = (attempt) => {
+    setAttempts(attempt);
+  }
 
 
   return (
@@ -28,13 +32,17 @@ const App = () => {
       <StatusBar style="auto" />
       
       {canGameStart ? (
-        <Game userName = {userName} userGuess = {userGuess}/>
+        <Game 
+          userName = {userName} 
+          userGuess = {userGuess}
+          attempts = {attempts}/>
       ) : (
         <Start 
           validateGameStart={setGameStartState}
           userNameHandler = {handleUserName}
           userGuessHandler = {handleUserGuess}
-        />
+          attempts = {attempts}
+          attemptsHandler = {handleAttempts} />
       )}
 
       

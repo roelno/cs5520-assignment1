@@ -4,7 +4,7 @@ import Checkbox from 'expo-checkbox';
 import Header from '../components/Header'
 import CustomButton from '../components/MyButton'
 
-const Start = ({validateGameStart, userNameHandler, userGuessHandler}) => {
+const Start = ({validateGameStart, userNameHandler, userGuessHandler, attempts, attemptsHandler}) => {
     const headerText = 'Guess My Number';
     const [myName, setMyName] = useState('');
     const [myNameError, setMyNameError] = useState('');
@@ -12,6 +12,7 @@ const Start = ({validateGameStart, userNameHandler, userGuessHandler}) => {
     const [myGuessError, setMyGuessError] = useState('');
     const [isRobot, setRobotChecked] = useState(false);
     const [isRobotError, setRobotCheckedError] = useState('');
+    // const [attemptsLeft, setAttemptsLeft] = useState(attempts);
 
     const resetAllUserInput = () => {
         setMyName('');
@@ -56,6 +57,9 @@ const Start = ({validateGameStart, userNameHandler, userGuessHandler}) => {
             validateGameStart(true);
             userNameHandler(myName);
             userGuessHandler(myGuess);
+
+            // setAttemptsLeft(attempts - 1);
+            attemptsHandler(attempts - 1);
         }
 
         return isValid;

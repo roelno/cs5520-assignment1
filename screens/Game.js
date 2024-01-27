@@ -1,9 +1,10 @@
 import { Button, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
+import CustomButton from '../components/MyButton';
 
-const Game = ({ userName, userGuess }) => {
+const Game = ({ userName, userGuess, attempts }) => {
     const answer = 1025;
-    const [attempts, setAttempts] = useState(2);
+    const attemptsLeft = attempts;
 
     return (
         <View style={styles.container}>
@@ -19,7 +20,14 @@ const Game = ({ userName, userGuess }) => {
                 <Text style={styles.resultText}>
                     You have <Text style={styles.stress}>{attempts}</Text> attempts left!
                 </Text>
-                
+                <CustomButton
+                    title="I am Done"
+                    onPress={null}
+                />
+                <CustomButton 
+                    title="Let me try again"
+                    onPress={null}   
+                />
             </View>
             }
 
@@ -30,13 +38,27 @@ const Game = ({ userName, userGuess }) => {
                 <Text style={styles.resultText}>
                     You have <Text style={styles.stress}>{attempts}</Text> attempts left!
                 </Text>
+                <CustomButton
+                    title="I am Done"
+                    onPress={null}
+                />
+                <CustomButton 
+                    title="Let me try again"
+                    onPress={null}   
+                />
             </View>
             }
 
             {(userGuess == answer) && 
+            <View>
                 <Text style={styles.resultText}>
                     Congrats <Text style={styles.stress}>{userName}</Text>! You won!
                 </Text>
+                <CustomButton
+                    title="Thank you!"
+                    onPress={ null }
+                />
+            </View>
             }
         </View>
     );
