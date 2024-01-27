@@ -9,13 +9,11 @@ const Game = ({ userName, userGuess, answer, attempts, onTryAgain, onGiveUp, has
         <Modal visible = {modalVisible}>
             <View style={styles.container}>
                 <View style={styles.card}>
-                    <Text style={styles.resultText}>Hello {userName}</Text>
-                    <Text style={styles.resultText}>
-                        You have chosen <Text style={styles.stress}>{userGuess}</Text>
-                    </Text>
 
                     {(userGuess < answer) && 
                     <View>
+                        <Text style={styles.resultText}>Hello {userName}</Text>
+                        <Text style={styles.resultText}>You have chosen <Text style={styles.stress}>{userGuess}</Text></Text>
                         <Text style={styles.resultText}>That's not my number!</Text>
                         <Text style={styles.resultText}>Guess higher!</Text>
                         <Text style={styles.resultText}>
@@ -38,6 +36,8 @@ const Game = ({ userName, userGuess, answer, attempts, onTryAgain, onGiveUp, has
 
                     {(userGuess > answer) &&
                     <View>
+                        <Text style={styles.resultText}>Hello {userName}</Text>
+                        <Text style={styles.resultText}>You have chosen <Text style={styles.stress}>{userGuess}</Text></Text>
                         <Text style={styles.resultText}>That's not my number!</Text>
                         <Text style={styles.resultText}>Guess lower!</Text>
                         <Text style={styles.resultText}>
@@ -61,7 +61,7 @@ const Game = ({ userName, userGuess, answer, attempts, onTryAgain, onGiveUp, has
                     {(hasUserWon) &&
                     <View>
                         <Text style={styles.resultText}>
-                            Congrats <Text style={styles.stress}>{userName}</Text>! You won!
+                            Congrats {userName}! You <Text style={styles.stress}>won!</Text>
                         </Text>
                         <CustomButton
                             title="Thank you!"
