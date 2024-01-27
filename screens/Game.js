@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'mistyrose'
     },
     card: {
-        marginTop: 80,
+        // marginTop: 80,
         justifyContent: 'center',
         backgroundColor: 'white',
         borderRadius: 10,

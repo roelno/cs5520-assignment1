@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
         padding: 5,
         textAlign: 'center',
         color: '#007649',
-        marginTop: 70,
+        marginTop: 80,
     }
 })

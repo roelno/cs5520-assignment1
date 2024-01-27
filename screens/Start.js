@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
         // justifyContent: "center",
     },
     card: {
-        marginTop: 80,
+        marginTop: 60,
         justifyContent: 'center',
         backgroundColor: 'white',
         borderRadius: 10,

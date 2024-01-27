@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
-import Header from './Header'
-import CustomButton from './MyButton';
+import Header from '../components/Header'
+import CustomButton from '../components/MyButton';
 
 const Final = ({hasUserWon, onStartAgain, answer}) => {
     const headerText = 'Game is Over';

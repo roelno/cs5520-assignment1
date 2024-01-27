@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { SafeAreaView, StyleSheet} from 'react-native'
 import Start from './screens/Start'
 import Game from "./screens/Game";
-import Final from "./components/Final";
+import Final from "./screens/Final";
  
 const App = () => {
   const [canGameStart, setGameStart] = useState(false);
