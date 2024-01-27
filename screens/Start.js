@@ -1,5 +1,5 @@
-import { Button, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import { SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native'
+import React, { useState } from 'react'
 import Checkbox from 'expo-checkbox';
 import Header from '../components/Header'
 import CustomButton from '../components/MyButton'

@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from 'react'
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet} from 'react-native'
 import Start from './screens/Start'
 import Game from "./screens/Game";
 import Final from "./components/Final";
@@ -107,13 +107,13 @@ const App = () => {
         
       
 
-      <Text>Name is {userName}</Text>
+      {/* <Text>Name is {userName}</Text>
       <Text>Guess is {userGuess}, Answer is {answer}</Text>
       <Text>Attempts left {attempts}</Text>
       <Text>Modal is {modalVisible ? 'visible' : 'hidden'}</Text>
       <Text>Has user won? {hasUserWon ? 'Won' : 'No'}</Text>
       <Text>Is game finished? {isGameFinished ? 'Yes' : 'No'}</Text>
-      <Text >{canGameStart ? 'Game Started!!' : 'Game Not Started'}</Text>
+      <Text >{canGameStart ? 'Game Started!!' : 'Game Not Started'}</Text> */}
     </SafeAreaView>
   )
 }
@@ -126,6 +126,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'mistyrose',
     alignItems: 'center',
-    // justifyContent: 'center',
   },
 });

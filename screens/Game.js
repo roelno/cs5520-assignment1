@@ -1,5 +1,5 @@
-import { Button, Modal, StyleSheet, Text, View } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import { Modal, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 import CustomButton from '../components/MyButton';
 
 const Game = ({ userName, userGuess, answer, attempts, onTryAgain, onGiveUp, hasUserWon, onCongrats, modalVisible }) => {
