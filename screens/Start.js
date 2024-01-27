@@ -12,7 +12,6 @@ const Start = ({validateGameStart, userNameHandler, userGuessHandler, attempts, 
     const [myGuessError, setMyGuessError] = useState('');
     const [isRobot, setRobotChecked] = useState(false);
     const [isRobotError, setRobotCheckedError] = useState('');
-    // const [attemptsLeft, setAttemptsLeft] = useState(attempts);
 
     const resetAllUserInput = () => {
         setMyName('');
@@ -57,8 +56,6 @@ const Start = ({validateGameStart, userNameHandler, userGuessHandler, attempts, 
             validateGameStart(true);
             userNameHandler(myName);
             userGuessHandler(myGuess);
-
-            // setAttemptsLeft(attempts - 1);
             attemptsHandler(attempts - 1);
         }
 
