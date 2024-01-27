@@ -3,7 +3,7 @@ import React from 'react'
 import Header from './Header'
 import CustomButton from './MyButton';
 
-const Final = ({hasUserWon, onStartAgain, anwer}) => {
+const Final = ({hasUserWon, onStartAgain, answer}) => {
     const headerText = 'Game is Over';
   return (
     <View>
@@ -11,9 +11,9 @@ const Final = ({hasUserWon, onStartAgain, anwer}) => {
         <View style = {styles.card}>
             <Text style = {styles.resultText}>Here's your picture</Text>
             {hasUserWon ? 
-            <Image source = {{uri: `https://picsum.photos/id/${anwer}/100/100`}} style = {{width: 200, height: 200}}/> 
+            <Image source = {{uri: `https://picsum.photos/id/${answer}/100/100`}} style = {styles.image}/> 
             :
-            <Image source={require('../assets/sad.png')} style = {{width: 200, height: 200, margin: 20}}/>}
+            <Image source={require('../assets/sad.png')} style = {styles.image}/>}
             
             <CustomButton
                 title="Start Again"
@@ -47,4 +47,10 @@ const styles = StyleSheet.create({
         color: '#007649',
         marginVertical: 4,
     },
+    image: {
+        width: 200, 
+        height: 200, 
+        margin: 10, 
+        borderRadius: 10
+    }
 })
