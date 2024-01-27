@@ -4,7 +4,7 @@ import Checkbox from 'expo-checkbox';
 import Header from '../components/Header'
 import CustomButton from '../components/MyButton'
 
-const Start = () => {
+const Start = ({validateGameStart}) => {
     const headerText = 'Guess My Number';
     const [myName, setMyName] = useState('');
     const [myNameError, setMyNameError] = useState('');
@@ -50,6 +50,10 @@ const Start = () => {
         if (!isRobot) {
             setRobotCheckedError('Please confirm you are not a robot');
             isValid = false;
+        }
+
+        if (isValid) {
+            validateGameStart(true);
         }
 
         return isValid;
@@ -99,6 +103,7 @@ const Start = () => {
                     />
                 </View>
             </View>
+            
 
         </SafeAreaView>
     )
