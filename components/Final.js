@@ -3,14 +3,18 @@ import React from 'react'
 import Header from './Header'
 import CustomButton from './MyButton';
 
-const Final = ({hasUserWon, onStartAgain}) => {
+const Final = ({hasUserWon, onStartAgain, anwer}) => {
     const headerText = 'Game is Over';
   return (
     <View>
         <Header headerText={headerText}/>
         <View style = {styles.card}>
             <Text style = {styles.resultText}>Here's your picture</Text>
-            <Image source = {{uri: 'https://picsum.photos/id/1024/100/100'}} style = {{width: 200, height: 200}}/>
+            {hasUserWon ? 
+            <Image source = {{uri: `https://picsum.photos/id/${anwer}/100/100`}} style = {{width: 200, height: 200}}/> 
+            :
+            <Image source={require('../assets/sad.png')} style = {{width: 200, height: 200, margin: 20}}/>}
+            
             <CustomButton
                 title="Start Again"
                 onPress={() => onStartAgain()}

@@ -10,6 +10,8 @@ const App = () => {
   const [hasUserWon, setHasUserWon] = useState(false);
   const [isGameFinished, setGameFinished] = useState(false);
 
+  const answer = Math.floor(Math.random() * 10) + 1020;
+
   const [userName, setUserName] = useState('');
   const [userGuess, setUserGuess] = useState('');
   const [attempts, setAttempts] = useState(3);
@@ -66,6 +68,7 @@ const App = () => {
         <Game
           userName = {userName} 
           userGuess = {userGuess}
+          answer = {answer}
           attempts = {attempts}
           onTryAgain={handleTryAgain}
           onGiveUp={onGiveUp}
@@ -86,13 +89,15 @@ const App = () => {
       ): (
         <Final 
           hasUserWon = {hasUserWon}
-          onStartAgain = {startAgain}/>
+          onStartAgain = {startAgain}
+          answer = {answer}/>
       )} 
         
       
 
       <Text>Name is {userName}</Text>
       <Text>Guess is {userGuess}</Text>
+      <Text>Answer is {answer}</Text>
       <Text>Attempts left {attempts}</Text>
       <Text>Modal is {modalVisible ? 'visible' : 'hidden'}</Text>
       <Text>Has user won? {hasUserWon ? 'Yes' : 'No'}</Text>

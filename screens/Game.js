@@ -2,8 +2,7 @@ import { Button, Modal, StyleSheet, Text, View } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import CustomButton from '../components/MyButton';
 
-const Game = ({ userName, userGuess, attempts, onTryAgain, onGiveUp, onUserWin, modalVisible }) => {
-    const answer = 1025;
+const Game = ({ userName, userGuess, answer, attempts, onTryAgain, onGiveUp, onUserWin, modalVisible }) => {
     const isAttemptsRemaining = attempts > 0;
 
     return (
