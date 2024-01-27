@@ -4,7 +4,7 @@ import Checkbox from 'expo-checkbox';
 import Header from '../components/Header'
 import CustomButton from '../components/MyButton'
 
-const Start = ({validateGameStart}) => {
+const Start = ({validateGameStart, userNameHandler, userGuessHandler}) => {
     const headerText = 'Guess My Number';
     const [myName, setMyName] = useState('');
     const [myNameError, setMyNameError] = useState('');
@@ -54,6 +54,8 @@ const Start = ({validateGameStart}) => {
 
         if (isValid) {
             validateGameStart(true);
+            userNameHandler(myName);
+            userGuessHandler(myGuess);
         }
 
         return isValid;
@@ -76,6 +78,7 @@ const Start = ({validateGameStart}) => {
                 <TextInput style = {styles.input}
                     value = {myGuess}
                     onChangeText = {(num) => setMyGuess(num)}
+                    // TODO :parseInt
                     keyboardType="numeric"
                 />
                 {myGuessError ? <Text style={styles.errorInput}>{myGuessError}</Text> : null}

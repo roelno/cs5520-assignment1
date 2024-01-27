@@ -6,9 +6,21 @@ import Game from "./screens/Game";
  
 const App = () => {
   const [canGameStart, setGameStart] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [userGuess, setUserGuess] = useState('');
+
   const setGameStartState = (state) => {
     setGameStart(state);
   }
+
+  const handleUserName = (name) => {
+    setUserName(name);
+  }
+
+  const handleUserGuess = (guess) => {
+    setUserGuess(guess);
+  }
+
 
 
   return (
@@ -16,9 +28,13 @@ const App = () => {
       <StatusBar style="auto" />
       
       {canGameStart ? (
-        <Game />
+        <Game userName = {userName} userGuess = {userGuess}/>
       ) : (
-        <Start validateGameStart={setGameStartState} />
+        <Start 
+          validateGameStart={setGameStartState}
+          userNameHandler = {handleUserName}
+          userGuessHandler = {handleUserGuess}
+        />
       )}
 
       
