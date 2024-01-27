@@ -4,6 +4,7 @@ import CustomButton from '../components/MyButton';
 
 const Game = ({ userName, userGuess, attempts, onTryAgain, onGiveUp, onUserWin, modalVisible }) => {
     const answer = 1025;
+    const isAttemptsRemaining = attempts > 0;
 
     return (
         <Modal visible = {modalVisible}>
@@ -23,10 +24,12 @@ const Game = ({ userName, userGuess, attempts, onTryAgain, onGiveUp, onUserWin, 
                     <CustomButton
                         title="I am Done"
                         onPress={() => onGiveUp()}
+                        isEnabled={true}
                     />
                     <CustomButton 
                         title="Let me try again"
-                        onPress={() => attempts > 0 ? onTryAgain() : null}   
+                        onPress={() => isAttemptsRemaining ? onTryAgain() : null}  
+                        isEnabled={isAttemptsRemaining} 
                     />
                 </View>
                 }
@@ -40,11 +43,13 @@ const Game = ({ userName, userGuess, attempts, onTryAgain, onGiveUp, onUserWin, 
                     </Text>
                     <CustomButton
                         title="I am Done"
-                        onPress={null}
+                        onPress={() => onGiveUp()}
+                        isEnabled={true}
                     />
                     <CustomButton 
                         title="Let me try again"
-                        onPress={() => attempts > 0 ? onTryAgain() : null}   
+                        onPress={() => isAttemptsRemaining ? onTryAgain() : null}   
+                        isEnabled={isAttemptsRemaining}
                     />
                 </View>
                 }

@@ -100,10 +100,12 @@ const Start = ({userName, userGuess, validateGameStart, userNameHandler, userGue
                     <CustomButton
                         title='Reset'
                         onPress={() => resetAllUserInput() }
+                        isEnabled={true}
                     />
                     <CustomButton
                         title='Confirm'
                         onPress={() => checkAllUserInput()}
+                        isEnabled={true}
                     />
                 </View>
             </View>
