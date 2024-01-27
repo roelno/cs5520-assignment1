@@ -122,6 +122,9 @@ const styles = StyleSheet.create({
         // alignItems: "center",
         // justifyContent: "center",
     },
+    card: {
+
+    },
     errorInput: {
         color: 'red',
         fontSize: 12,

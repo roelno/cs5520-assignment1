@@ -11,9 +11,11 @@ const Card = ({ children, style }) => {
 
 const styles = StyleSheet.create({
     card: {
+        marginTop: 60,
+        justifyContent: 'center',
         backgroundColor: 'white',
         borderRadius: 10,
-        padding: 20,
+        padding: 30,
         margin: 20,
         shadowColor: 'grey',
         shadowOffset: { width: 0, height: 1 },

@@ -21,9 +21,11 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 40,
+        textAlign: 'center',
         borderBottomWidth: 2,
         borderBottomColor: 'purple',
         color: 'purple',
+        width: 240,
     },
     errorText: {
         color: 'red',
