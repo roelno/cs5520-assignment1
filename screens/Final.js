@@ -9,20 +9,22 @@ const Final = ({hasUserWon, onStartAgain, answer}) => {
     const headerText = 'Game is Over';
   return (
     <View>
-        <Header headerText={headerText}/>
-        <Card style = {styles.card}>
-            <Text style = {styles.resultText}>Here's your picture</Text>
-            {hasUserWon ? 
-            <Image source = {{uri: `https://picsum.photos/id/${answer}/100/100`}} style = {styles.image}/> 
-            :
-            <Image source={require('../assets/sad.png')} style = {styles.image}/>}
-            
-            <CustomButton
-                title="Start Again"
-                onPress={() => onStartAgain()}
-                isEnabled={true}
-            />
-        </Card>
+        <View>
+            <Header headerText={headerText}/>
+            <Card style = {styles.card}>
+                <Text style = {styles.resultText}>Here's your picture</Text>
+                {hasUserWon ? 
+                <Image source = {{uri: `https://picsum.photos/id/${answer}/100/100`}} style = {styles.image}/> 
+                :
+                <Image source={require('../assets/sad.png')} style = {styles.image}/>}
+                
+                <CustomButton
+                    title="Start Again"
+                    onPress={() => onStartAgain()}
+                    isEnabled={true}
+                />
+            </Card>
+        </View>
     </View>
   )
 }

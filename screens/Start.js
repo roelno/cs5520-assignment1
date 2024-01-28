@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import Checkbox from 'expo-checkbox';
 import Header from '../components/Header'
@@ -66,8 +66,8 @@ const Start = ({userName, userGuess, validateGameStart, userNameHandler, userGue
     };
 
     return (
-        <SafeAreaView style = {styles.container}>
-        
+        <View>
+
             <Header headerText = {headerText} />
 
             <Card style={styles.card}>
@@ -111,18 +111,13 @@ const Start = ({userName, userGuess, validateGameStart, userNameHandler, userGue
             </Card>
             
 
-        </SafeAreaView>
+        </View>
     )
 }
 
 export default Start
 
 const styles = StyleSheet.create({
-    container: {
-        // flex: 1,
-        // alignItems: "center",
-        // justifyContent: "center",
-    },
     card: {
 
     },

@@ -1,10 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from 'react'
-import { SafeAreaView, StyleSheet} from 'react-native'
+import { SafeAreaView, View, StyleSheet} from 'react-native'
 import Start from './screens/Start'
 import Game from "./screens/Game";
 import Final from "./screens/Final";
-import colors from "./helper/Colors";
+import GradientWrapper from "./components/GradientWrapper";
  
 const App = () => {
   const [canGameStart, setGameStart] = useState(false);
@@ -73,49 +73,52 @@ const App = () => {
 
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar style="auto" />
+    <GradientWrapper>
 
-      {canGameStart && !isGameFinished ? (
-        <Game
-          userName = {userName} 
-          userGuess = {userGuess}
-          answer = {answer}
-          attempts = {attempts}
-          onTryAgain={handleTryAgain}
-          onGiveUp={onGiveUp}
-          onCongrats = {onCongrats}
-          hasUserWon={hasUserWon}
-          modalVisible={modalVisible}
-        />
-      ) : !canGameStart ? (
-        <Start
-          userName = {userName}
-          userGuess = {userGuess}
-          validateGameStart = {setGameStartState}
-          userNameHandler = {handleUserName}
-          userGuessHandler = {handleUserGuess}
-          hasUserWon = {hasUserWon}
-          attempts = {attempts}
-          attemptsHandler = {handleAttempts} 
+
+
+        <StatusBar style="auto" />
+
+        {canGameStart && !isGameFinished ? (
+          <Game
+            userName = {userName} 
+            userGuess = {userGuess}
+            answer = {answer}
+            attempts = {attempts}
+            onTryAgain={handleTryAgain}
+            onGiveUp={onGiveUp}
+            onCongrats = {onCongrats}
+            hasUserWon={hasUserWon}
+            modalVisible={modalVisible}
           />
-      ): (
-        <Final 
-          hasUserWon = {hasUserWon}
-          onStartAgain = {startAgain}
-          answer = {answer}/>
-      )} 
+        ) : !canGameStart ? (
+          <Start
+            userName = {userName}
+            userGuess = {userGuess}
+            validateGameStart = {setGameStartState}
+            userNameHandler = {handleUserName}
+            userGuessHandler = {handleUserGuess}
+            hasUserWon = {hasUserWon}
+            attempts = {attempts}
+            attemptsHandler = {handleAttempts} 
+            />
+        ): (
+          <Final 
+            hasUserWon = {hasUserWon}
+            onStartAgain = {startAgain}
+            answer = {answer}/>
+        )} 
+          
         
-      
 
-      {/* <Text>Name is {userName}</Text>
-      <Text>Guess is {userGuess}, Answer is {answer}</Text>
-      <Text>Attempts left {attempts}</Text>
-      <Text>Modal is {modalVisible ? 'visible' : 'hidden'}</Text>
-      <Text>Has user won? {hasUserWon ? 'Won' : 'No'}</Text>
-      <Text>Is game finished? {isGameFinished ? 'Yes' : 'No'}</Text>
-      <Text >{canGameStart ? 'Game Started!!' : 'Game Not Started'}</Text> */}
-    </SafeAreaView>
+        {/* <Text>Name is {userName}</Text>
+        <Text>Guess is {userGuess}, Answer is {answer}</Text>
+        <Text>Attempts left {attempts}</Text>
+        <Text>Modal is {modalVisible ? 'visible' : 'hidden'}</Text>
+        <Text>Has user won? {hasUserWon ? 'Won' : 'No'}</Text>
+        <Text>Is game finished? {isGameFinished ? 'Yes' : 'No'}</Text>
+        <Text >{canGameStart ? 'Game Started!!' : 'Game Not Started'}</Text> */}
+    </GradientWrapper>
   )
 }
 
@@ -123,9 +126,4 @@ const App = () => {
 export default App
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-    alignItems: 'center',
-  },
 });
