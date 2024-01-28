@@ -4,6 +4,7 @@ import { SafeAreaView, StyleSheet} from 'react-native'
 import Start from './screens/Start'
 import Game from "./screens/Game";
 import Final from "./screens/Final";
+import colors from "./helper/Colors";
  
 const App = () => {
   const [canGameStart, setGameStart] = useState(false);
@@ -124,7 +125,7 @@ export default App
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'mistyrose',
+    backgroundColor: colors.background,
     alignItems: 'center',
   },
 });

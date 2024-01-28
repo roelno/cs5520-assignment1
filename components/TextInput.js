@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextInput, Text, StyleSheet, View } from 'react-native';
+import colors from '../helper/Colors';
 
 const TextInputField = ({ value, onChangeText, placeholder, keyboardType, errorMessage }) => {
     return (
@@ -23,12 +24,12 @@ const styles = StyleSheet.create({
         height: 40,
         textAlign: 'center',
         borderBottomWidth: 2,
-        borderBottomColor: 'purple',
-        color: 'purple',
+        borderBottomColor: colors.secondary,
+        color: colors.secondary,
         width: 240,
     },
     errorText: {
-        color: 'red',
+        color: colors.error,
         fontSize: 12,
         marginTop: 3,
     },

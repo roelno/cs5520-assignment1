@@ -1,6 +1,8 @@
 import { Modal, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import CustomButton from '../components/MyButton';
+import Card from '../components/Card';
+import colors from '../helper/Colors';
 
 const Game = ({ userName, userGuess, answer, attempts, onTryAgain, onGiveUp, hasUserWon, onCongrats, modalVisible }) => {
     const isAttemptsRemaining = attempts > 0;
@@ -8,7 +10,7 @@ const Game = ({ userName, userGuess, answer, attempts, onTryAgain, onGiveUp, has
     return (
         <Modal visible = {modalVisible}>
             <View style={styles.container}>
-                <View style={styles.card}>
+                <Card style={styles.card}>
 
                     {(userGuess < answer) && 
                     <View>
@@ -61,7 +63,7 @@ const Game = ({ userName, userGuess, answer, attempts, onTryAgain, onGiveUp, has
                     {(hasUserWon) &&
                     <View>
                         <Text style={styles.resultText}>
-                            Congrats {userName}! You <Text style={styles.stress}>won!</Text>
+                            Congrats {userName}! You <Text style={styles.stress}>won ! 🎉</Text>
                         </Text>
                         <CustomButton
                             title="Thank you!"
@@ -70,7 +72,7 @@ const Game = ({ userName, userGuess, answer, attempts, onTryAgain, onGiveUp, has
                         />
                     </View>
                     }
-                </View>
+                </Card>
             </View>
         </Modal>
     );
@@ -83,20 +85,10 @@ const styles = StyleSheet.create({
         flex: 1, 
         justifyContent: "center",
         alignItems: "center", 
-        backgroundColor: 'mistyrose'
+        backgroundColor: colors.background,
     },
     card: {
-        // marginTop: 80,
-        justifyContent: 'center',
-        backgroundColor: 'white',
-        borderRadius: 10,
-        padding: 30,
-        margin: 20,
-        shadowColor: 'grey',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.2,
-        shadowRadius: 1.5,
-        elevation: 5,
+
     },
     buttonContainer: { 
         flexDirection: 'column',
@@ -107,11 +99,11 @@ const styles = StyleSheet.create({
     resultText: {
         fontSize: 20,
         textAlign: 'center',
-        color: '#007649',
+        color: colors.primary,
         marginVertical: 4,
     },
     stress: {
         fontWeight: 'bold',
-        color: 'purple',
+        color: colors.secondary,
     },
 });

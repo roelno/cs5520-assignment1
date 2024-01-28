@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import TextInputField from '../components/TextInput';
 import Card from '../components/Card'; 
 import CustomButton from '../components/MyButton'
+import colors from '../helper/Colors';
 
 const Start = ({userName, userGuess, validateGameStart, userNameHandler, userGuessHandler, attempts, attemptsHandler}) => {
     const headerText = 'Guess My Number';
@@ -89,11 +90,11 @@ const Start = ({userName, userGuess, validateGameStart, userNameHandler, userGue
                         style={styles.checkbox}
                         value={isRobot}
                         onValueChange={setRobotChecked}
-                        color={isRobot ? 'purple' : 'purple'}
+                        color={isRobot ? colors.secondary : colors.secondary}
                     />
                     <Text style={styles.checkboxLabel}>I'm not a robot</Text>
                 </View>
-                {isRobotError ? <Text style={styles.errorInput}>{isRobotError}</Text> : null}
+                {isRobotError ? <Text style={styles.errorMessage}>{isRobotError}</Text> : null}
 
                 <View style={styles.buttonContainer}>
                     <CustomButton
@@ -125,15 +126,15 @@ const styles = StyleSheet.create({
     card: {
 
     },
-    errorInput: {
-        color: 'red',
+    errorMessage: {
+        color: colors.error,
         fontSize: 12,
         marginTop: 1,
     },
     hint: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#007649',
+        color: colors.primary,
         marginTop: 20,
     },
     checkboxContainer: {
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
     },
     checkboxLabel: {
         fontSize: 16,
-        color: 'purple'
+        color: colors.secondary
     },
     buttonContainer: { 
         flexDirection: 'row',

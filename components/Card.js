@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import colors from '../helper/Colors';
 
 const Card = ({ children, style }) => {
     return (
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
     card: {
         marginTop: 60,
         justifyContent: 'center',
-        backgroundColor: 'white',
+        backgroundColor: colors.cardBackground,
         borderRadius: 10,
         padding: 30,
         margin: 20,
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.2,
         shadowRadius: 1.5,
-        elevation: 5,
+        elevation: 10,
     },
 });
 
